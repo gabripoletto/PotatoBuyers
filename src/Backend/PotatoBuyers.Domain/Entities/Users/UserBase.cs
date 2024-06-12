@@ -1,6 +1,8 @@
-﻿namespace PotatoBuyers.Communication.Requests
+﻿using PotatoBuyers.Domain.Entities.BaseEntities;
+
+namespace PotatoBuyers.Domain.Entities.Users
 {
-    public class RequestRegisterUserJson
+    public class UserBase : EntityBase
     {
         public string Name { get; set; } = string.Empty;
         public string Password { get; set; } = string.Empty;
