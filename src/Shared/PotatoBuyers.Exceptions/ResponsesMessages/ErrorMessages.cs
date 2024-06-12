@@ -1,13 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PotatoBuyers.Exceptions.ResponsesMessages
+﻿namespace PotatoBuyers.Exceptions.ResponsesMessages
 {
     public class ErrorMessages
     {
+        public const string INTERNAL_ERROR = "Erro interno no servidor";
+
         public const string CPF_INVALID = "CPF inválido.";
 
         public const string EMAIL_INVALID = "Email inválido.";

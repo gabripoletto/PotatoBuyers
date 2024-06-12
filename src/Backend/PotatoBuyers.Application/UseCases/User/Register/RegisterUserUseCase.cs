@@ -1,6 +1,6 @@
-﻿using FluentValidation;
-using PotatoBuyers.Communication.Requests;
+﻿using PotatoBuyers.Communication.Requests;
 using PotatoBuyers.Communication.Responses;
+using PotatoBuyers.Exceptions.ExceptionsBase;
 
 namespace PotatoBuyers.Application.UseCases.User.Register
 {
@@ -12,7 +12,7 @@ namespace PotatoBuyers.Application.UseCases.User.Register
 
 
             return null;
-        }
+        } 
 
         private void Validate(RequestRegisterUserJson request)
         {
@@ -21,9 +21,9 @@ namespace PotatoBuyers.Application.UseCases.User.Register
 
             if (!result.IsValid)
             {
-                var errorMessages = result.Errors.Select(e => e.ErrorMessage);
+                var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();
 
-                throw new Exception(errorMessages.ToString());
+                throw new ErrorOnValidationException(errorMessages);
             }
         }
     }
