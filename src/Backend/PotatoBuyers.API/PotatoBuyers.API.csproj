@@ -10,4 +10,10 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Shared\PotatoBuyers.Communication\PotatoBuyers.Communication.csproj" />
+    <ProjectReference Include="..\..\Shared\PotatoBuyers.Exceptions\PotatoBuyers.Exceptions.csproj" />
+    <ProjectReference Include="..\PotatoBuyers.Application\PotatoBuyers.Application.csproj" />
+  </ItemGroup>
+
 </Project>
