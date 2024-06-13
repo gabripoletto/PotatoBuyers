@@ -14,6 +14,7 @@
     <ProjectReference Include="..\..\Shared\PotatoBuyers.Communication\PotatoBuyers.Communication.csproj" />
     <ProjectReference Include="..\..\Shared\PotatoBuyers.Exceptions\PotatoBuyers.Exceptions.csproj" />
     <ProjectReference Include="..\PotatoBuyers.Application\PotatoBuyers.Application.csproj" />
+    <ProjectReference Include="..\PotatoBuyers.Infrastructure\PotatoBuyers.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
