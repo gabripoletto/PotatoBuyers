@@ -2,6 +2,8 @@ using PotatoBuyers.API.Filters;
 using PotatoBuyers.API.Middleware;
 using PotatoBuyers.Application;
 using PotatoBuyers.Infrastructure;
+using PotatoBuyers.Infrastructure.Extensions;
+using PotatoBuyers.Infrastructure.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -34,4 +36,13 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateDatabase();
+
 app.Run();
+
+void MigrateDatabase()
+{
+    var connectionString = builder.Configuration.ConnectionString();
+
+    DatabaseMigraton.Migrate(connectionString);
+}
