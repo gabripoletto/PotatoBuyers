@@ -11,17 +11,21 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Backend", "Backend", "{2930
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{3F0E088D-2F89-4EAE-82A8-CAEF48F8583D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.API", "src\Backend\PotatoBuyers.API\PotatoBuyers.API.csproj", "{F9B99941-B831-4DEC-A689-7DA14596DA92}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.API", "src\Backend\PotatoBuyers.API\PotatoBuyers.API.csproj", "{F9B99941-B831-4DEC-A689-7DA14596DA92}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.Application", "src\Backend\PotatoBuyers.Application\PotatoBuyers.Application.csproj", "{08A56195-EB07-43B9-B072-7475374CEF5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Application", "src\Backend\PotatoBuyers.Application\PotatoBuyers.Application.csproj", "{08A56195-EB07-43B9-B072-7475374CEF5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.Domain", "src\Backend\PotatoBuyers.Domain\PotatoBuyers.Domain.csproj", "{5A13D8AF-6AB2-4CE9-B1D7-BCC2E58BB44A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Domain", "src\Backend\PotatoBuyers.Domain\PotatoBuyers.Domain.csproj", "{5A13D8AF-6AB2-4CE9-B1D7-BCC2E58BB44A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.Infrastructure", "src\Backend\PotatoBuyers.Infrastructure\PotatoBuyers.Infrastructure.csproj", "{E46BE779-7AAA-4D77-8207-1DE30BFD6C1F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Infrastructure", "src\Backend\PotatoBuyers.Infrastructure\PotatoBuyers.Infrastructure.csproj", "{E46BE779-7AAA-4D77-8207-1DE30BFD6C1F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.Communication", "src\Shared\PotatoBuyers.Communication\PotatoBuyers.Communication.csproj", "{18EB8330-099C-464D-A09A-23641F67F270}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Communication", "src\Shared\PotatoBuyers.Communication\PotatoBuyers.Communication.csproj", "{18EB8330-099C-464D-A09A-23641F67F270}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PotatoBuyers.Exceptions", "src\Shared\PotatoBuyers.Exceptions\PotatoBuyers.Exceptions.csproj", "{B0743800-E877-492B-9D29-F33274E017BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Exceptions", "src\Shared\PotatoBuyers.Exceptions\PotatoBuyers.Exceptions.csproj", "{B0743800-E877-492B-9D29-F33274E017BE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{172527F1-9AFC-4DE5-8287-7B1247F08144}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommomTestUtilities", "tests\CommomTestUtilities\CommomTestUtilities.csproj", "{C91938B5-8499-46E4-84D0-DED0D0876C6A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +57,14 @@ Global
 		{B0743800-E877-492B-9D29-F33274E017BE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B0743800-E877-492B-9D29-F33274E017BE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B0743800-E877-492B-9D29-F33274E017BE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{172527F1-9AFC-4DE5-8287-7B1247F08144}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{172527F1-9AFC-4DE5-8287-7B1247F08144}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{172527F1-9AFC-4DE5-8287-7B1247F08144}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{172527F1-9AFC-4DE5-8287-7B1247F08144}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,6 +78,8 @@ Global
 		{E46BE779-7AAA-4D77-8207-1DE30BFD6C1F} = {29300D49-A036-4D6F-A4D8-3B2A9E004DAD}
 		{18EB8330-099C-464D-A09A-23641F67F270} = {3F0E088D-2F89-4EAE-82A8-CAEF48F8583D}
 		{B0743800-E877-492B-9D29-F33274E017BE} = {3F0E088D-2F89-4EAE-82A8-CAEF48F8583D}
+		{172527F1-9AFC-4DE5-8287-7B1247F08144} = {99955849-4D78-4C3B-8B45-BF78FB6396FA}
+		{C91938B5-8499-46E4-84D0-DED0D0876C6A} = {99955849-4D78-4C3B-8B45-BF78FB6396FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AB01F06-AFA8-4CA3-A90B-0F39D23801C3}
