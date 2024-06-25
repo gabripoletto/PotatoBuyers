@@ -7,7 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Enums\" />
+    <PackageReference Include="Bogus" Version="35.5.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Shared\PotatoBuyers.Communication\PotatoBuyers.Communication.csproj" />
   </ItemGroup>
 
 </Project>

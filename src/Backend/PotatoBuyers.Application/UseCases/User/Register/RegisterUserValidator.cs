@@ -20,6 +20,7 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             RuleFor(user => user.Password).Matches(@"\d").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
             RuleFor(user => user.Password).Matches(@"[A-Z]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
             RuleFor(user => user.Password).Matches(@"[\W_]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
+            //(user => string.IsNullOrEmpty(user.Email) == false)
         }
 
         private static bool IsCpf(string cpf)

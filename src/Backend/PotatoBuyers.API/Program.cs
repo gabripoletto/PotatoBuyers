@@ -1,4 +1,9 @@
+using PotatoBuyers.API.Filters;
 using PotatoBuyers.API.Middleware;
+using PotatoBuyers.Application;
+using PotatoBuyers.Infrastructure;
+using PotatoBuyers.Infrastructure.Extensions;
+using PotatoBuyers.Infrastructure.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,6 +13,11 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+builder.Services.AddMvc(options => options.Filters.Add(typeof(ExceptionFilter)));
+
+builder.Services.AddApplication(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
@@ -26,4 +36,15 @@ app.UseAuthorization();
 
 app.MapControllers();
 
+MigrateDatabase();
+
 app.Run();
+
+void MigrateDatabase()
+{
+    var connectionString = builder.Configuration.ConnectionString();
+
+    var serviceScope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope();
+
+    DatabaseMigraton.Migrate(connectionString, serviceScope.ServiceProvider);
+}
