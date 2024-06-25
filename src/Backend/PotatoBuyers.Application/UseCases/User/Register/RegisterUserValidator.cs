@@ -10,17 +10,27 @@ namespace PotatoBuyers.Application.UseCases.User.Register
         {
             RuleFor(user => user.Name).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Email).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            RuleFor(user => user.Email).EmailAddress().WithMessage(ErrorMessages.EMAIL_INVALID);
             RuleFor(user => user.Cpf).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            RuleFor(user => user.Cpf).Must(IsCpf).WithMessage(ErrorMessages.CPF_INVALID);
             RuleFor(user => user.Telefone).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID);
+            
             RuleFor(user => user.Password).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ErrorMessages.PASSWORD_INVALID_DIGITS);
             RuleFor(user => user.Password).Matches(@"\d").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
             RuleFor(user => user.Password).Matches(@"[A-Z]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
             RuleFor(user => user.Password).Matches(@"[\W_]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
-            //(user => string.IsNullOrEmpty(user.Email) == false)
+            When(user => string.IsNullOrEmpty(user.Email) == false, () =>
+            {
+                RuleFor(user => user.Email).EmailAddress().WithMessage(ErrorMessages.EMAIL_INVALID);
+            });
+            When(user => string.IsNullOrEmpty(user.Cpf) == false, () =>
+            {
+                RuleFor(user => user.Cpf).Must(IsCpf).WithMessage(ErrorMessages.CPF_INVALID);
+            });
+            When(user => string.IsNullOrEmpty(user.Telefone) == false, () =>
+            {
+                RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID);
+            });
+
         }
 
         private static bool IsCpf(string cpf)
