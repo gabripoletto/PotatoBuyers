@@ -12,7 +12,6 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             RuleFor(user => user.Email).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Cpf).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Telefone).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            
             RuleFor(user => user.Password).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ErrorMessages.PASSWORD_INVALID_DIGITS);
             RuleFor(user => user.Password).Matches(@"\d").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
@@ -30,7 +29,6 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             {
                 RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID);
             });
-
         }
 
         private static bool IsCpf(string cpf)
