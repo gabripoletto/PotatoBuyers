@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using PotatoBuyers.Communication.Requests;
 using PotatoBuyers.Exceptions.ResponsesMessages;
+using System.Text.RegularExpressions;
 
 namespace PotatoBuyers.Application.UseCases.User.Register
 {
@@ -13,22 +14,38 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             RuleFor(user => user.Cpf).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Telefone).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Password).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(6).WithMessage(ErrorMessages.PASSWORD_INVALID_DIGITS);
-            RuleFor(user => user.Password).Matches(@"\d").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
-            RuleFor(user => user.Password).Matches(@"[A-Z]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
-            RuleFor(user => user.Password).Matches(@"[\W_]").WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
-            When(user => string.IsNullOrEmpty(user.Email) == false, () =>
+            When(user => !string.IsNullOrEmpty(user.Email), () =>
             {
                 RuleFor(user => user.Email).EmailAddress().WithMessage(ErrorMessages.EMAIL_INVALID);
             });
-            When(user => string.IsNullOrEmpty(user.Cpf) == false, () =>
+            When(user => !string.IsNullOrEmpty(user.Cpf), () =>
             {
-                RuleFor(user => user.Cpf).Must(IsCpf).WithMessage(ErrorMessages.CPF_INVALID);
+                RuleFor(user => user.Cpf)   
+                .Cascade(CascadeMode.Stop)
+                .Matches(@"^\d{3}\.\d{3}\.\d{3}-\d{2}$")
+                .WithMessage(ErrorMessages.CPF_INVALID_FORMAT)
+                .Must(IsCpf)
+                .WithMessage(ErrorMessages.CPF_INVALID);
             });
-            When(user => string.IsNullOrEmpty(user.Telefone) == false, () =>
+            When(user => !string.IsNullOrEmpty(user.Telefone), () =>
             {
-                RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID);
+                RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID_FORMAT);
             });
+            When(user => !string.IsNullOrEmpty(user.Password), () =>
+            {
+                RuleFor(user => user.Password.Length).GreaterThanOrEqualTo(8).WithMessage(ErrorMessages.PASSWORD_INVALID_DIGITS);
+                When(user => user.Password.Length > 8, () =>
+                {
+                    RuleFor(user => user.Password).Must(password => HasRequiredCharacters(password)).WithMessage(ErrorMessages.PASSWORD_REQUIRED_DIGITS);
+                });
+            });
+        }
+
+        private bool HasRequiredCharacters(string password)
+        {
+            return Regex.IsMatch(password, @"\d") ||
+                   Regex.IsMatch(password, @"[A-Z]") ||
+                   Regex.IsMatch(password, @"[\W_]");
         }
 
         private static bool IsCpf(string cpf)

@@ -23,9 +23,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Communication"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PotatoBuyers.Exceptions", "src\Shared\PotatoBuyers.Exceptions\PotatoBuyers.Exceptions.csproj", "{B0743800-E877-492B-9D29-F33274E017BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{172527F1-9AFC-4DE5-8287-7B1247F08144}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Validators.Test", "tests\Validators.Test\Validators.Test.csproj", "{172527F1-9AFC-4DE5-8287-7B1247F08144}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommomTestUtilities", "tests\CommomTestUtilities\CommomTestUtilities.csproj", "{C91938B5-8499-46E4-84D0-DED0D0876C6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommomTestUtilities", "tests\CommomTestUtilities\CommomTestUtilities.csproj", "{C91938B5-8499-46E4-84D0-DED0D0876C6A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UseCases.Test", "tests\UseCases.Test\UseCases.Test.csproj", "{0053D5C0-1168-48A7-B055-051188C34DD6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -65,6 +67,10 @@ Global
 		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C91938B5-8499-46E4-84D0-DED0D0876C6A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0053D5C0-1168-48A7-B055-051188C34DD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0053D5C0-1168-48A7-B055-051188C34DD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0053D5C0-1168-48A7-B055-051188C34DD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0053D5C0-1168-48A7-B055-051188C34DD6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,6 +86,7 @@ Global
 		{B0743800-E877-492B-9D29-F33274E017BE} = {3F0E088D-2F89-4EAE-82A8-CAEF48F8583D}
 		{172527F1-9AFC-4DE5-8287-7B1247F08144} = {99955849-4D78-4C3B-8B45-BF78FB6396FA}
 		{C91938B5-8499-46E4-84D0-DED0D0876C6A} = {99955849-4D78-4C3B-8B45-BF78FB6396FA}
+		{0053D5C0-1168-48A7-B055-051188C34DD6} = {99955849-4D78-4C3B-8B45-BF78FB6396FA}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4AB01F06-AFA8-4CA3-A90B-0F39D23801C3}
