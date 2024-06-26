@@ -8,7 +8,9 @@
 
         public const string EMAIL_INVALID = "Email inválido.";
 
-        public const string TEL_INVALID = "Telefone inválido. Formato esperado: (XX) XXXXX-XXXX";
+        public const string TEL_INVALID_FORMAT = "Telefone inválido. Formato esperado: (XX) XXXXX-XXXX";
+
+        public const string CPF_INVALID_FORMAT = "CPF inválido. Formato esperado: XXX.XXX.XXX-XX";
 
         public const string PASSWORD_INVALID_DIGITS = "A senha deve conter mais que 6 dígitos";
 
