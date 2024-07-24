@@ -17,5 +17,7 @@
         public const string PASSWORD_REQUIRED_DIGITS = "A senha deve conter pelo menos 1 letra maiúscula, 1 número e 1 caractere especial (@, #, $, %, etc.).";
 
         public const string REQUIRED_FIELD = "Um campo obrigatório não foi preenchido!";
+
+        public const string EMAIL_ALREADY_REGISTERED = "E-mail já registrado";
     }
 }

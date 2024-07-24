@@ -8,12 +8,15 @@ namespace CommomTestUtilities.Requests
     {
         public static RequestRegisterUserJson Build(int passwordLength = 10)
         {
-            return new Faker<RequestRegisterUserJson>()
+            var teste = new Faker<RequestRegisterUserJson>()
                 .RuleFor(user => user.Name, (f) => f.Person.FullName)
                 .RuleFor(user => user.Password, (f) => GeneratePassword(passwordLength))
                 .RuleFor(user => user.Email, (f, user) => f.Internet.Email(user.Name))
                 .RuleFor(user => user.Cpf, (f) => f.Person.Cpf(true))
                 .RuleFor(user => user.Telefone, (f) => f.Phone.PhoneNumberFormat(55));
+
+
+            return teste;
         }
 
         private static string GeneratePassword(int passwordLength)
