@@ -51,6 +51,5 @@ namespace UseCases.Test.User.Register
             
             return new RegisterUserUseCase(userWriteOnly, userReadOnly.Builder(), unitOfWork, mapper, passwordEncripter);
         }
-
     }
 }
