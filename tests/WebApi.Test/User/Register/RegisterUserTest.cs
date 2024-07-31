@@ -3,6 +3,7 @@ using FluentAssertions;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System.Net;
 using System.Net.Http.Json;
+using System.Text.Json;
 using Xunit;
 
 namespace WebApi.Test.User.Register
@@ -24,6 +25,12 @@ namespace WebApi.Test.User.Register
             var response = await _httpClient.PostAsJsonAsync("User", request);
 
             response.StatusCode.Should().Be(HttpStatusCode.Created);
+
+            await using var responseBody = await response.Content.ReadAsStreamAsync();
+
+            var responseData = await JsonDocument.ParseAsync(responseBody);
+
+            responseData.RootElement.GetProperty("response").GetString().Should().NotBeNullOrWhiteSpace().And.Be(request.Name);
         }
     }
 }

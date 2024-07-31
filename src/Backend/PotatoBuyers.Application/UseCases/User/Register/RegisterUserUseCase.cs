@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Azure;
 using PotatoBuyers.Application.Services.Cryptography;
 using PotatoBuyers.Communication.Requests;
 using PotatoBuyers.Communication.Responses;
@@ -45,7 +46,10 @@ namespace PotatoBuyers.Application.UseCases.User.Register
 
             await _unitOfWork.Commit();
 
-            return null;
+            return new ResponseRegisterUserJson
+            {
+                Response = request.Name,
+            };
         } 
 
         private async Task Validate(RequestRegisterUserJson request)
