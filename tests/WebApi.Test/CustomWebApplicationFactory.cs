@@ -17,6 +17,7 @@ namespace WebApi.Test
                     if(descriptor is not null)
                         services.Remove(descriptor);
 
+                    //Atualizar .Net pro 8 e trocar services.AddEntityFrameworkMySql() por services.AddEntityFrameworkInMemoryDatabase()
                     var provider = services.AddEntityFrameworkMySql().BuildServiceProvider();
 
                     services.AddDbContext<PotatoBuyersDbContext>(options =>
