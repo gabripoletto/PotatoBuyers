@@ -12,6 +12,5 @@ namespace PotatoBuyers.Infrastructure.DataAccess.Repositories.User
 
         public async Task Insert(UserBase user) => await _dbContext.UserBases.AddAsync(user);
         public async Task<bool> ExistActiveUserWithEmail(string email) => await _dbContext.UserBases.AnyAsync(user => user.Email.Equals(email) && user.Active);
-
     }
 }
