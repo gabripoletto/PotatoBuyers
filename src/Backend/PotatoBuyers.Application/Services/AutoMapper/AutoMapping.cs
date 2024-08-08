@@ -18,7 +18,6 @@ namespace PotatoBuyers.Application.Services.AutoMapper
 
         private void DomainToResponse()
         {
-
         }
     }
 }
