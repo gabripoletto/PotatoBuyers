@@ -13,13 +13,13 @@ namespace PotatoBuyers.API.Middleware
 
         public async Task Invoke(HttpContext context)
         {
-            CultureInfo[]? supportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures);
+            var supportedLanguages = CultureInfo.GetCultures(CultureTypes.AllCultures).ToList();
 
             string? requestedCulture = context.Request.Headers.AcceptLanguage.FirstOrDefault();
 
             CultureInfo? cultureInfo = new CultureInfo("en");
 
-            if (!string.IsNullOrWhiteSpace(requestedCulture) && supportedLanguages.Any(c => c.Name.Equals(requestedCulture)))
+            if (!string.IsNullOrWhiteSpace(requestedCulture) && supportedLanguages.Exists(c => c.Name.Equals(requestedCulture)))
             {
                 cultureInfo = new CultureInfo(requestedCulture);
             }
