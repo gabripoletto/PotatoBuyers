@@ -61,8 +61,8 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             var emailExist = await _readOnlyRepository.ExistActiveUserWithEmail(request.Email);
 
             if (emailExist)
-                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ErrorMessages.EMAIL_INVALID));
-            
+                result.Errors.Add(new FluentValidation.Results.ValidationFailure(string.Empty, ErrorMessages.EMAIL_ALREADY_REGISTERED));
+
             if (!result.IsValid)
             {
                 var errorMessages = result.Errors.Select(e => e.ErrorMessage).ToList();

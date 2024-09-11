@@ -7,7 +7,7 @@ namespace PotatoBuyers.Infrastructure.DataAccess
     {
         public PotatoBuyersDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<UserBase> UserBases { get; set; }
+        public DbSet<UserBase> Users { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

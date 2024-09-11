@@ -7,12 +7,12 @@ namespace PotatoBuyers.Infrastructure.Migrations.Versions
     {
         public override void Up()
         {
-            CreateTable("UserBase")
+            CreateTable("users")
                 .WithColumn("Name").AsString(255).NotNullable()
                 .WithColumn("Password").AsString(5000).NotNullable()
                 .WithColumn("Email").AsString(255).NotNullable()
                 .WithColumn("Cpf").AsString(14).NotNullable()
-                .WithColumn("Telefone").AsString(15).NotNullable();
+                .WithColumn("Telephone").AsString(15).NotNullable();
         }
     }
 }

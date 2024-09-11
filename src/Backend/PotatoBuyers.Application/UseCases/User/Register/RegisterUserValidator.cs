@@ -12,7 +12,7 @@ namespace PotatoBuyers.Application.UseCases.User.Register
             RuleFor(user => user.Name).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Email).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Cpf).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
-            RuleFor(user => user.Telefone).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
+            RuleFor(user => user.Telephone).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             RuleFor(user => user.Password).NotEmpty().WithMessage(ErrorMessages.REQUIRED_FIELD);
             When(user => !string.IsNullOrEmpty(user.Email), () =>
             {
@@ -27,9 +27,9 @@ namespace PotatoBuyers.Application.UseCases.User.Register
                 .Must(IsCpf)
                 .WithMessage(ErrorMessages.CPF_INVALID);
             });
-            When(user => !string.IsNullOrEmpty(user.Telefone), () =>
+            When(user => !string.IsNullOrEmpty(user.Telephone), () =>
             {
-                RuleFor(user => user.Telefone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID_FORMAT);
+                RuleFor(user => user.Telephone).Matches(@"^\(\d{2}\) \d{5}-\d{4}$").WithMessage(ErrorMessages.TEL_INVALID_FORMAT);
             });
             When(user => !string.IsNullOrEmpty(user.Password), () =>
             {

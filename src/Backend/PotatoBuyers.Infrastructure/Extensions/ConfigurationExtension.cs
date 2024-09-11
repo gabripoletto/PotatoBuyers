@@ -6,10 +6,10 @@ namespace PotatoBuyers.Infrastructure.Extensions
     {
         public static bool IsUnitTestEnviroment(this IConfiguration configuration)
         {
-            //Ajustar após atualizar tudo
+            //Ajustar após atualizar .net
             //return configuration.GetValue<bool>("inMemoryTest");
 
-            return true;
+            return false;
         }
 
         public static string ConnectionString(this IConfiguration configuration)
