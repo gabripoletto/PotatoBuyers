@@ -117,12 +117,12 @@ namespace Validators.Test.User.Register
         }
 
         [Fact]
-        public void Error_Telefone_Empty()
+        public void Error_Telephone_Empty()
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
             var request = RegisterUserValidatorBuilder.Build();
-            request.Telefone = string.Empty;
+            request.Telephone = string.Empty;
 
             var result = validator.Validate(request);
 
@@ -138,7 +138,7 @@ namespace Validators.Test.User.Register
             RegisterUserValidator validator = new RegisterUserValidator();
 
             var request = RegisterUserValidatorBuilder.Build();
-            request.Telefone = "19999999999";
+            request.Telephone = "19999999999";
 
             var result = validator.Validate(request);
 

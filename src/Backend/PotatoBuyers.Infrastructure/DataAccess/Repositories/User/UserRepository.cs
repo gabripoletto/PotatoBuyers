@@ -10,7 +10,7 @@ namespace PotatoBuyers.Infrastructure.DataAccess.Repositories.User
 
         public UserRepository(PotatoBuyersDbContext dbContext) => _dbContext = dbContext;
 
-        public async Task Insert(UserBase user) => await _dbContext.UserBases.AddAsync(user);
-        public async Task<bool> ExistActiveUserWithEmail(string email) => await _dbContext.UserBases.AnyAsync(user => user.Email.Equals(email) && user.Active);
+        public async Task Insert(UserBase user) => await _dbContext.Users.AddAsync(user);
+        public async Task<bool> ExistActiveUserWithEmail(string email) => await _dbContext.Users.AnyAsync(user => user.Email.Equals(email) && user.Active);
     }
 }
