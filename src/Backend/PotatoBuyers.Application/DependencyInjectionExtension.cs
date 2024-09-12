@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using PotatoBuyers.Application.Services.AutoMapper;
 using PotatoBuyers.Application.Services.Cryptography;
+using PotatoBuyers.Application.UseCases.Login.DoLogin;
 using PotatoBuyers.Application.UseCases.User.Register;
 
 namespace PotatoBuyers.Application
@@ -26,6 +27,7 @@ namespace PotatoBuyers.Application
         private static void AddUseCase(IServiceCollection services)
         {
             services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
+            services.AddScoped<IDoLoginUseCase, DoLoginUseCase>();
         }
 
         private static void AddPasswordEncripter(IServiceCollection services, IConfiguration configuration)
