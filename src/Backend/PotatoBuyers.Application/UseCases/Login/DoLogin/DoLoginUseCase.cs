@@ -2,6 +2,7 @@
 using PotatoBuyers.Communication.Requests;
 using PotatoBuyers.Communication.Responses;
 using PotatoBuyers.Domain.Repositories.User;
+using PotatoBuyers.Exceptions.ExceptionsBase;
 
 namespace PotatoBuyers.Application.UseCases.Login.DoLogin
 {
@@ -18,9 +19,13 @@ namespace PotatoBuyers.Application.UseCases.Login.DoLogin
 
         public async Task<ResponseRegisteredUserJson> Execute(RequestLoginJson request)
         {
+            var encriptedPassword = _passwordEncripter.Encrypt(request.Password);
+
+            var user = await _repository.GetByEmailAndPassword(request.Email, encriptedPassword) ?? throw new InvalidLoginException();
+            
             return new ResponseRegisteredUserJson 
             {
-                Name = ""
+                Name = user.Name 
             };
         }
     }

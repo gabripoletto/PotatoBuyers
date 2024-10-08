@@ -19,5 +19,7 @@
         public const string REQUIRED_FIELD = "Um campo obrigatório não foi preenchido!";
 
         public const string EMAIL_ALREADY_REGISTERED = "E-mail já registrado";
+
+        public const string EMAIL_OR_PASSWORD_INVALID = "Email e/ou senha inválidos.";
     }
 }

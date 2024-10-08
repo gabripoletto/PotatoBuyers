@@ -6,9 +6,7 @@ using PotatoBuyers.Communication.Responses;
 
 namespace PotatoBuyers.API.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class UserController : ControllerBase
+    public class UserController : PotatoBuyersBaseController
     {
         [HttpPost("Registrar")]
         [AllowAnonymous]

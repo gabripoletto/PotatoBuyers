@@ -2,5 +2,6 @@
 {
     public class PotatoBuyersExceptions : SystemException
     {
+        public PotatoBuyersExceptions(string message) : base(message) { }
     }
 }
