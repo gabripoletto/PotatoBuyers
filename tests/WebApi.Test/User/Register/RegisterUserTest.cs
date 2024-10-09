@@ -27,7 +27,7 @@ namespace WebApi.Test.User.Register
         [Fact]
         public async Task Success()
         {
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
 
             var response = await _httpClient.PostAsJsonAsync(method, request);
 
@@ -44,7 +44,7 @@ namespace WebApi.Test.User.Register
         [ClassData(typeof(CultureInlineDataTest))]
         public async Task Error_Empty_Name(string culture)
         {
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Name = string.Empty;
 
             if (_httpClient.DefaultRequestHeaders.Contains("Accept-language"))

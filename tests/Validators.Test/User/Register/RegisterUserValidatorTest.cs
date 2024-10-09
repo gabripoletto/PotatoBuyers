@@ -14,7 +14,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
 
             var result = validator.Validate(request);
 
@@ -26,7 +26,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Name = string.Empty;
 
             var result = validator.Validate(request);
@@ -42,7 +42,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Email = string.Empty;
 
             var result = validator.Validate(request);
@@ -58,7 +58,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Email = "ErrorTeste@@";
             var result = validator.Validate(request);
 
@@ -73,7 +73,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Cpf = string.Empty;
 
             var result = validator.Validate(request);
@@ -89,7 +89,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Cpf = "231.123.123-22";
 
             var result = validator.Validate(request);
@@ -105,7 +105,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Cpf = "23112312322";
 
             var result = validator.Validate(request);
@@ -121,7 +121,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Telephone = string.Empty;
 
             var result = validator.Validate(request);
@@ -137,7 +137,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Telephone = "19999999999";
 
             var result = validator.Validate(request);
@@ -161,7 +161,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build(passwordLength);
+            var request = RequestRegisterUserJsonBuilder.Build(passwordLength);
 
             var result = validator.Validate(request);
 
@@ -179,7 +179,7 @@ namespace Validators.Test.User.Register
         {
             RegisterUserValidator validator = new RegisterUserValidator();
 
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
             request.Password = InvalidPasswordType(passwordType);
 
             var result = validator.Validate(request);
