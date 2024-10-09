@@ -15,7 +15,7 @@ namespace UseCases.Test.User.Register
         [Fact]
         public async Task Success()
         {
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
 
             var useCase = CreateUseCase();
 
@@ -28,7 +28,7 @@ namespace UseCases.Test.User.Register
         [Fact]
         public async Task Error_Email_Already_Registered()
         {
-            var request = RegisterUserValidatorBuilder.Build();
+            var request = RequestRegisterUserJsonBuilder.Build();
 
             var useCase = CreateUseCase(request.Email);
 

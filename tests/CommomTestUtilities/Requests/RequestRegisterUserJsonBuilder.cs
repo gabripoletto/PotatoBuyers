@@ -4,7 +4,7 @@ using PotatoBuyers.Communication.Requests;
 
 namespace CommomTestUtilities.Requests
 {
-    public class RegisterUserValidatorBuilder
+    public class RequestRegisterUserJsonBuilder
     {
         public static RequestRegisterUserJson Build(int passwordLength = 10)
         {
@@ -14,7 +14,6 @@ namespace CommomTestUtilities.Requests
                 .RuleFor(user => user.Email, (f, user) => f.Internet.Email(user.Name))
                 .RuleFor(user => user.Cpf, (f) => f.Person.Cpf(true))
                 .RuleFor(user => user.Telephone, (f) => f.Phone.PhoneNumberFormat(55));
-
 
             return teste;
         }
