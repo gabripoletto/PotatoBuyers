@@ -4,6 +4,7 @@ using CommomTestUtilities.Requests;
 using FluentAssertions;
 using PotatoBuyers.Application.UseCases.Login.DoLogin;
 using PotatoBuyers.Communication.Requests;
+using PotatoBuyers.Domain.Entities.Users;
 using PotatoBuyers.Exceptions.ExceptionsBase;
 using PotatoBuyers.Exceptions.ResponsesMessages;
 using Xunit;
@@ -22,6 +23,9 @@ namespace UseCases.Test.Login.DoLogin
                 Email = "",
                 Password = "",
             });
+
+            result.Should().NotBeNull();
+            result.Name.Should().NotBeNullOrWhiteSpace().And.Be("");
         }
 
         [Fact]
@@ -37,10 +41,13 @@ namespace UseCases.Test.Login.DoLogin
                 .Where(e => e.Message.Equals(ErrorMessages.EMAIL_OR_PASSWORD_INVALID));
         }
 
-        private static DoLoginUseCase CreateUseCase()
+        private static DoLoginUseCase CreateUseCase(UserBase? user = null)
         {
             var passwordEncripter = PasswordEncripterBuilder.Build();
             var userReadOnlyRepositoryBuilder = new UserReadOnlyRepositoryBuilder();
+
+            if (user is not null)
+                userReadOnlyRepositoryBuilder.GetByEmailAndPassword(user);
 
             return new DoLoginUseCase(userReadOnlyRepositoryBuilder.Builder(), passwordEncripter);
         }

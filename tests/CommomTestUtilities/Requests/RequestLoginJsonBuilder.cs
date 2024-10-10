@@ -1,4 +1,5 @@
 ﻿using Bogus;
+using CommomTestUtilities.UtilitiesTest;
 using PotatoBuyers.Communication.Requests;
 
 namespace CommomTestUtilities.Requests
@@ -9,22 +10,9 @@ namespace CommomTestUtilities.Requests
         {
             var teste = new Faker<RequestLoginJson>()
                 .RuleFor(user => user.Email, (f, user) => f.Internet.Email(user.Email))
-                .RuleFor(user => user.Password, (f) => GeneratePassword(passwordLength));
+                .RuleFor(user => user.Password, (f) => PasswordGenerator.GeneratePassword(passwordLength));
 
             return teste;
-        }
-
-        private static string GeneratePassword(int passwordLength)
-        {
-            var faker = new Faker();
-            string password;
-
-            do
-            {
-                password = faker.Random.String2(passwordLength, @"^.*(?=.{6,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=]).*$");
-            } while (password.Length < 8);
-
-            return password;
         }
     }
 }
