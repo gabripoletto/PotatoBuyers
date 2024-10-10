@@ -1,4 +1,5 @@
 ﻿using Moq;
+using PotatoBuyers.Domain.Entities.Users;
 using PotatoBuyers.Domain.Repositories.User;
 
 namespace CommomTestUtilities.Repositories
@@ -12,6 +13,11 @@ namespace CommomTestUtilities.Repositories
         public void ExistActiveUserWithEmail(string email)
         {
             _repository.Setup(repository => repository.ExistActiveUserWithEmail(email)).ReturnsAsync(true);
+        }
+
+        public void GetByEmailAndPassword(UserBase user)
+        {
+            _repository.Setup(repository => repository.GetByEmailAndPassword(user.Email, user.Password)).ReturnsAsync(user);
         }
 
         public IUserReadOnlyRepository Builder() => _repository.Object;

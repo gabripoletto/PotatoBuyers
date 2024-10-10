@@ -1,4 +1,5 @@
 ﻿using CommomTestUtilities.Requests;
+using CommomTestUtilities.UtilitiesTest;
 using FluentAssertions;
 using PotatoBuyers.Application.UseCases.User.Register;
 using PotatoBuyers.Exceptions.ResponsesMessages;
@@ -197,58 +198,18 @@ namespace Validators.Test.User.Register
             switch (type)
             {
                 case 1:
-                    password = GeneratePasswordWithNumber();
+                    password = PasswordGenerator.GeneratePasswordWithNumber();
                     break;
                 case 2:
-                    password = GeneratePasswordWithUppercase();
+                    password = PasswordGenerator.GeneratePasswordWithUppercase();
                     break;
                 case 3:
-                    password = GeneratePasswordWithSpecialCharacter();
+                    password = PasswordGenerator.GeneratePasswordWithSpecialCharacter();
                     break;
                 default:
                     password = "123456789";
                     break;
             }
-
-            return password;
-        }
-
-        private static string GeneratePasswordWithNumber()
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz";
-            const string numbers = "0123456789";
-            return GenerateInvalidPassword(chars, numbers, @"\d");
-        }
-
-        private static string GeneratePasswordWithUppercase()
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz";
-            const string uppercase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
-            return GenerateInvalidPassword(chars, uppercase, @"[A-Z]");
-        }
-
-        private static string GeneratePasswordWithSpecialCharacter()
-        {
-            const string chars = "abcdefghijklmnopqrstuvwxyz";
-            const string specialChars = "!@#$%^&*()-_=+[{]}\\|;:'\",<.>/?";
-            return GenerateInvalidPassword(chars, specialChars, @"[\W_]");
-        }
-
-        private static string GenerateInvalidPassword(string chars, string extraChars, string regexPattern)
-        {
-            Random random = new Random();
-
-            string password;
-            do
-            {
-                char[] buffer = new char[9];
-                for (int i = 0; i < 8; i++)
-                {
-                    buffer[i] = chars[random.Next(chars.Length)];
-                }
-                buffer[8] = extraChars[random.Next(extraChars.Length)];
-                password = new string(buffer);
-            } while (!Regex.IsMatch(password, regexPattern));
 
             return password;
         }
