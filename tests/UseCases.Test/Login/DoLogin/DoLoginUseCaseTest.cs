@@ -1,4 +1,5 @@
 ﻿using CommomTestUtilities.Cryptography;
+using CommomTestUtilities.Entities;
 using CommomTestUtilities.Repositories;
 using CommomTestUtilities.Requests;
 using FluentAssertions;
@@ -16,12 +17,14 @@ namespace UseCases.Test.Login.DoLogin
         [Fact]
         public async Task Success()
         {
-            var useCase = CreateUseCase();
+            (var user, var password) = UserBaseBuilder.Build();
+
+            var useCase = CreateUseCase(user);
 
             var result = await useCase.Execute(new RequestLoginJson
             {
-                Email = "",
-                Password = "",
+                Email = user.Email,
+                Password = password,
             });
 
             result.Should().NotBeNull();

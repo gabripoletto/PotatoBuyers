@@ -1,13 +1,18 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using CommomTestUtilities.Entities;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using PotatoBuyers.Domain.Entities.Users;
 using PotatoBuyers.Infrastructure.DataAccess;
 
 namespace WebApi.Test
 {
     public class CustomWebApplicationFactory : WebApplicationFactory<Program>
     {
+        private UserBase _user = default!;
+        private string _password = string.Empty;
+
         protected override void ConfigureWebHost(IWebHostBuilder builder)
         {
             builder.UseEnvironment("Test")
@@ -25,7 +30,28 @@ namespace WebApi.Test
                         options.UseInMemoryDatabase("InMemoryDbForTesting");
                         options.UseInternalServiceProvider(provider);
                     });
+
+                    using var scope = services.BuildServiceProvider().CreateScope();
+
+                    var dbContext = scope.ServiceProvider.GetRequiredService<PotatoBuyersDbContext>();
+
+                    dbContext.Database.EnsureDeleted();
+
+                    StartDataBase(dbContext);
                 });
+        }
+
+        public string GetEmail() => _user.Email;
+        public string GetPassword() => _password;
+        public string GetName() => _user.Name;
+
+        private void StartDataBase(PotatoBuyersDbContext dbContext)
+        {
+            (_user, _password) = UserBaseBuilder.Build();
+
+            dbContext.Users.Add(_user);
+
+            dbContext.SaveChanges();
         }
     }
 }

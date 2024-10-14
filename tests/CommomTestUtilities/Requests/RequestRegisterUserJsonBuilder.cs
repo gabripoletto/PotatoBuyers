@@ -9,14 +9,14 @@ namespace CommomTestUtilities.Requests
     {
         public static RequestRegisterUserJson Build(int passwordLength = 10)
         {
-            var teste = new Faker<RequestRegisterUserJson>()
+            var test = new Faker<RequestRegisterUserJson>()
                 .RuleFor(user => user.Name, (f) => f.Person.FullName)
                 .RuleFor(user => user.Password, (f) => PasswordGenerator.GeneratePassword(passwordLength))
                 .RuleFor(user => user.Email, (f, user) => f.Internet.Email(user.Name))
                 .RuleFor(user => user.Cpf, (f) => f.Person.Cpf(true))
                 .RuleFor(user => user.Telephone, (f) => f.Phone.PhoneNumberFormat(55));
 
-            return teste;
+            return test;
         }
     }
 }
